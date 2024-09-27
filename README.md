@@ -40,3 +40,47 @@ If for some reason Figma link stops working, here you can see the requested desi
 ![Design from Figma](./images/Figma.png)
 
 # Good luck! 💪
+
+## GitFlow Convention
+
+This project follows the [GitFlow branching model](https://nvie.com/posts/a-successful-git-branching-model/) to manage the codebase efficiently. GitFlow helps maintain a clean repository with well-defined processes for feature development, releases, and hotfixes. Below is an overview of the key branches and workflows:
+
+### Main Branches
+- **`main`**: Contains the production-ready code. All changes here are thoroughly tested and approved.
+- **`develop`**: Serves as the integration branch for new features. All feature branches are merged into `develop` once complete.
+
+### Supporting Branches
+Supporting branches are used to manage new development, bug fixes, and releases. They are categorized as:
+
+- **Feature Branches** (`feat/your-feature-name`):
+   - **Branch off from**: `develop`
+   - **Merge back into**: `develop`
+   - **Naming convention**: `feature/<feature-name>`
+   - Used to develop new features or enhancements.
+
+- **Release Branches** (`release/x.x.x`):
+   - **Branch off from**: `develop`
+   - **Merge back into**: `main` and `develop`
+   - **Naming convention**: `release/<version-number>`
+
+- **Hotfix Branches** (`hotfix/x.x.x`):
+   - **Branch off from**: `main`
+   - **Merge back into**: `main` and `develop`
+   - **Naming convention**: `hotfix/<version-number>`
+
+
+## Commit Message Types
+
+- **feat**: A new feature.
+- **fix**: A bug fix.
+- **perf**: A code change that improves performance.
+- **revert**: Reverts a previous commit.
+- **refactor**: Refactoring production code, e.g., renaming a variable.
+- **build**: Changes that affect the build system or external dependencies.
+- **docs**: Documentation only changes.
+- **style**: Changes that do not affect the meaning of the code (e.g., white-space, formatting, missing semi-colons, etc.).
+- **chore**: Updating grunt tasks, configuration changes, or changes that do not affect production code. Most admin work falls under this category.
+- **test**: Adding missing tests or correcting existing tests.
+- **ci**: Changes to our CI configuration files and scripts.
+- **hotfix**: Used for critical fixes in the `main` branch without disrupting ongoing development.
+- **release**: Used to prepare for a new production release, allowing for final testing and minor bug fixes.
