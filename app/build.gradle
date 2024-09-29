@@ -6,7 +6,24 @@ plugins {
     id 'com.google.dagger.hilt.android'
 }
 
+
+
 android {
+
+    def secretPropsFile = rootProject.file("secret.properties")
+    def properties = new Properties()
+    if (secretPropsFile.exists()) {
+        properties.load(new FileInputStream(secretPropsFile))
+    }
+
+    signingConfigs {
+        release {
+            storeFile file(properties['storeFile'])
+            storePassword properties['storePassword']
+            keyAlias properties['keyAlias']
+            keyPassword properties['keyPassword']
+        }
+    }
     namespace 'pl.inpost.recruitmenttask'
     compileSdk 35
 
@@ -22,8 +39,13 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            applicationIdSuffix ".debug"
         }
     }
     compileOptions {
@@ -40,6 +62,7 @@ android {
         viewBinding true
         compose true
     }
+
 }
 
 kapt {

@@ -18,8 +18,12 @@ android {
 
     buildTypes {
         release {
+            // it should be set to false: https://stackoverflow.com/a/78521204
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
         }
     }
     compileOptions {
