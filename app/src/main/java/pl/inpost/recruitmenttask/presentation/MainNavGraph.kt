@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import pl.inpost.recruitmenttask.presentation.shipmentList.ShipmentScreen
+import pl.inpost.recruitmenttask.theme.InpostAppTheme
 
 @Composable
 fun MainNavGraph(
@@ -23,7 +24,9 @@ fun MainNavGraph(
         composable(
             Destinations.SHIPMENT_ROUTE
         ) {
-            ShipmentScreen()
+            InpostAppTheme {
+                ShipmentScreen()
+            }
         }
     }
 }
