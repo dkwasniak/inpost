@@ -2,8 +2,8 @@ package pl.inpost.recruitmenttask.mapper
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.threeten.bp.ZonedDateTime
 import pl.inpost.domain.model.EventLog
-import java.time.ZonedDateTime
 
 class EventLogUiMapperTest {
 
