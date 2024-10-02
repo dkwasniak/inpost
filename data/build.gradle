@@ -45,8 +45,6 @@ dependencies {
     testImplementation "io.mockk:mockk:1.13.12"
     androidTestImplementation 'androidx.test.ext:junit:1.2.1'
 
-    api "com.jakewharton.threetenabp:threetenabp:1.4.4"
-
     //hilt
     implementation('com.google.dagger:hilt-android:2.51.1')
     kapt 'com.google.dagger:hilt-compiler:2.51.1'

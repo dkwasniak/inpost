@@ -5,6 +5,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.delay
+import org.threeten.bp.ZonedDateTime
 import pl.inpost.data.R
 import pl.inpost.data.adapter.ZonedDateTimeApiTypeAdapter
 import pl.inpost.data.model.ShipmentDto
@@ -15,7 +16,6 @@ import pl.inpost.domain.model.EventLog
 import pl.inpost.domain.model.Operations
 import pl.inpost.domain.model.Shipment
 import pl.inpost.domain.model.ShipmentType
-import java.time.ZonedDateTime
 import kotlin.random.Random
 
 class MockShipmentApi(
