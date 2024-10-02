@@ -4,8 +4,8 @@ import java.time.ZonedDateTime
 
 data class Shipment(
     val number: String,
-    val shipmentType: String,
-    val status: String,
+    val shipmentType: ShipmentType,
+    val status: ShipmentStatus,
     val eventLog: List<EventLog>,
     val openCode: String?,
     val expiryDate: ZonedDateTime?,

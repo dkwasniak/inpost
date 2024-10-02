@@ -6,8 +6,8 @@ import pl.inpost.recruitmenttask.model.ShipmentUiModel
 fun Shipment.toUiModel(): ShipmentUiModel {
     return ShipmentUiModel(
         number = this.number,
-        shipmentType = this.shipmentType,
-        status = this.status,
+        shipmentType = this.shipmentType.toUiModel(),
+        status = this.status.toUiModel(),
         eventLogUiModel = this.eventLog.map { it.toUiModel() },
         openCode = this.openCode,
         expiryDate = this.expiryDate,
