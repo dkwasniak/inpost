@@ -6,8 +6,8 @@ import pl.inpost.domain.model.Shipment
 fun ShipmentDto.toDomain(): Shipment {
     return Shipment(
         number = this.number,
-        shipmentType = this.shipmentType,
-        status = this.status,
+        shipmentType = this.shipmentType.toDomain(),
+        status = this.status.toDomain(),
         eventLog = this.eventLog.map { it.toDomain() },
         openCode = this.openCode,
         expiryDate = this.expiryDate,

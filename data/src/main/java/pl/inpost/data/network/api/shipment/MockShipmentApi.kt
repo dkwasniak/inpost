@@ -63,8 +63,8 @@ private fun mockShipmentNetwork(
     pickupDate: ZonedDateTime? = null
 ) = Shipment(
     number = number,
-    shipmentType = type.name,
-    status = status.name,
+    shipmentType = type,
+    status = status,
     eventLog = eventLog,
     openCode = openCode,
     expiryDate = expireDate,

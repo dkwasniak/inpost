@@ -6,6 +6,10 @@ import pl.inpost.domain.model.Customer
 import pl.inpost.domain.model.EventLog
 import pl.inpost.domain.model.Operations
 import pl.inpost.domain.model.Shipment
+import pl.inpost.domain.model.ShipmentStatus
+import pl.inpost.domain.model.ShipmentType
+import pl.inpost.recruitmenttask.model.ShipmentStatusUiModel
+import pl.inpost.recruitmenttask.model.ShipmentTypeUiModel
 import java.time.ZonedDateTime
 
 class ShipmentUiMapperTest {
@@ -41,8 +45,8 @@ class ShipmentUiMapperTest {
 
         val shipment = Shipment(
             number = "12345",
-            shipmentType = "PACKAGE",
-            status = "DELIVERED",
+            shipmentType = ShipmentType.PARCEL_LOCKER,
+            status = ShipmentStatus.DELIVERED,
             eventLog = listOf(eventLog),
             openCode = "0000",
             expiryDate = ZonedDateTime.parse("2023-10-01T10:15:30Z"),
@@ -58,8 +62,8 @@ class ShipmentUiMapperTest {
 
         // Then
         assertEquals("12345", uiModel.number)
-        assertEquals("PACKAGE", uiModel.shipmentType)
-        assertEquals("DELIVERED", uiModel.status)
+        assertEquals(ShipmentTypeUiModel.PARCEL_LOCKER, uiModel.shipmentType)
+        assertEquals(ShipmentStatusUiModel.DELIVERED, uiModel.status)
         assertEquals("0000", uiModel.openCode)
         assertEquals(ZonedDateTime.parse("2023-10-01T10:15:30Z"), uiModel.expiryDate)
         assertEquals(ZonedDateTime.parse("2023-09-27T10:15:30Z"), uiModel.storedDate)
@@ -105,8 +109,8 @@ class ShipmentUiMapperTest {
 
         val shipment = Shipment(
             number = "12345",
-            shipmentType = "PACKAGE",
-            status = "DELIVERED",
+            shipmentType = ShipmentType.PARCEL_LOCKER,
+            status = ShipmentStatus.DELIVERED,
             eventLog = listOf(eventLog),
             openCode = "0000",
             expiryDate = null,
@@ -122,8 +126,8 @@ class ShipmentUiMapperTest {
 
         // Then
         assertEquals("12345", uiModel.number)
-        assertEquals("PACKAGE", uiModel.shipmentType)
-        assertEquals("DELIVERED", uiModel.status)
+        assertEquals(ShipmentTypeUiModel.PARCEL_LOCKER, uiModel.shipmentType)
+        assertEquals(ShipmentStatusUiModel.DELIVERED, uiModel.status)
         assertEquals("0000", uiModel.openCode)
         assertEquals(null, uiModel.expiryDate)
         assertEquals(null, uiModel.storedDate)
@@ -153,8 +157,8 @@ class ShipmentUiMapperTest {
 
         val shipment = Shipment(
             number = "12345",
-            shipmentType = "PACKAGE",
-            status = "DELIVERED",
+            shipmentType = ShipmentType.PARCEL_LOCKER,
+            status = ShipmentStatus.DELIVERED,
             eventLog = emptyList(),
             openCode = "0000",
             expiryDate = null,
@@ -170,8 +174,8 @@ class ShipmentUiMapperTest {
 
         // Then
         assertEquals("12345", uiModel.number)
-        assertEquals("PACKAGE", uiModel.shipmentType)
-        assertEquals("DELIVERED", uiModel.status)
+        assertEquals(ShipmentTypeUiModel.PARCEL_LOCKER, uiModel.shipmentType)
+        assertEquals(ShipmentStatusUiModel.DELIVERED, uiModel.status)
         assertEquals("0000", uiModel.openCode)
         assertEquals(0, uiModel.eventLogUiModel.size)
         assertEquals(null, uiModel.expiryDate)
