@@ -5,8 +5,6 @@ import pl.inpost.recruitmenttask.model.CustomerUiModel
 
 fun Customer.toUiModel(): CustomerUiModel {
     return CustomerUiModel(
-        email = this.email,
-        phoneNumber = this.phoneNumber,
-        name = this.name
+        name = this.name ?: this.email ?: phoneNumber
     )
 }

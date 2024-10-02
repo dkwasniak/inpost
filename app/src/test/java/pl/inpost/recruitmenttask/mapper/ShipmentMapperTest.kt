@@ -74,12 +74,7 @@ class ShipmentUiMapperTest {
         assertEquals("Shipment created", uiModel.eventLogUiModel[0].name)
         assertEquals(ZonedDateTime.parse("2023-09-28T10:15:30Z"), uiModel.eventLogUiModel[0].date)
 
-        assertEquals("receiver@example.com", uiModel.receiver?.email)
-        assertEquals("123456789", uiModel.receiver?.phoneNumber)
         assertEquals("Receiver Name", uiModel.receiver?.name)
-
-        assertEquals("sender@example.com", uiModel.sender?.email)
-        assertEquals("987654321", uiModel.sender?.phoneNumber)
         assertEquals("Sender Name", uiModel.sender?.name)
 
         assertEquals(true, uiModel.operationsUiModel.manualArchive)
