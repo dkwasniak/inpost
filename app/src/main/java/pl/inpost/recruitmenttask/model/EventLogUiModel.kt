@@ -1,6 +1,7 @@
 package pl.inpost.recruitmenttask.model
 
-import java.time.ZonedDateTime
+import org.threeten.bp.ZonedDateTime
+
 
 data class EventLogUiModel(
     val name: String,

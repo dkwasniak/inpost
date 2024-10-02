@@ -1,6 +1,7 @@
 package pl.inpost.data.model
 
-import java.time.ZonedDateTime
+import org.threeten.bp.ZonedDateTime
+
 
 data class ShipmentDto(
     val number: String,
