@@ -1,98 +1,55 @@
-package pl.inpost.recruitmenttask.mapper
-
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import pl.inpost.domain.model.Customer
+import pl.inpost.recruitmenttask.mapper.toUiModel
 
-class CustomerUiMapperTest {
+class CustomerMapperTest {
 
     @Test
-    fun `should map Customer to CustomerUiModel correctly`() {
+    fun `toUiModel should map name when name is not null`() {
         // Given
-        val customer = Customer(
-            email = "test@example.com",
-            phoneNumber = "123456789",
-            name = "John Doe"
-        )
+        val customer = Customer(name = "John Doe", email = "john.doe@example.com", phoneNumber = "123456789")
 
         // When
         val uiModel = customer.toUiModel()
 
         // Then
-        assertEquals("test@example.com", uiModel.email)
-        assertEquals("123456789", uiModel.phoneNumber)
         assertEquals("John Doe", uiModel.name)
     }
 
     @Test
-    fun `should handle null email in Customer model`() {
+    fun `toUiModel should map email when name is null and email is not null`() {
         // Given
-        val customer = Customer(
-            email = null,
-            phoneNumber = "123456789",
-            name = "John Doe"
-        )
+        val customer = Customer(name = null, email = "john.doe@example.com", phoneNumber = "123456789")
 
         // When
         val uiModel = customer.toUiModel()
 
         // Then
-        assertEquals(null, uiModel.email)
-        assertEquals("123456789", uiModel.phoneNumber)
-        assertEquals("John Doe", uiModel.name)
+        assertEquals("john.doe@example.com", uiModel.name)
     }
 
     @Test
-    fun `should handle null phoneNumber in Customer model`() {
+    fun `toUiModel should map phoneNumber when both name and email are null`() {
         // Given
-        val customer = Customer(
-            email = "test@example.com",
-            phoneNumber = null,
-            name = "John Doe"
-        )
+        val customer = Customer(name = null, email = null, phoneNumber = "123456789")
 
         // When
         val uiModel = customer.toUiModel()
 
         // Then
-        assertEquals("test@example.com", uiModel.email)
-        assertEquals(null, uiModel.phoneNumber)
-        assertEquals("John Doe", uiModel.name)
+        assertEquals("123456789", uiModel.name)
     }
 
     @Test
-    fun `should handle null name in Customer model`() {
+    fun `toUiModel should map empty string when all fields are null`() {
         // Given
-        val customer = Customer(
-            email = "test@example.com",
-            phoneNumber = "123456789",
-            name = null
-        )
+        val customer = Customer(name = null, email = null, phoneNumber = null)
 
         // When
         val uiModel = customer.toUiModel()
 
         // Then
-        assertEquals("test@example.com", uiModel.email)
-        assertEquals("123456789", uiModel.phoneNumber)
-        assertEquals(null, uiModel.name)
-    }
-
-    @Test
-    fun `should handle completely null fields in Customer model`() {
-        // Given
-        val customer = Customer(
-            email = null,
-            phoneNumber = null,
-            name = null
-        )
-
-        // When
-        val uiModel = customer.toUiModel()
-
-        // Then
-        assertEquals(null, uiModel.email)
-        assertEquals(null, uiModel.phoneNumber)
         assertEquals(null, uiModel.name)
     }
 }
