@@ -1,4 +1,4 @@
-package pl.inpost.recruitmenttask.remotedata
+package pl.inpost.domain.remotedata
 
 import java.io.Serializable
 
