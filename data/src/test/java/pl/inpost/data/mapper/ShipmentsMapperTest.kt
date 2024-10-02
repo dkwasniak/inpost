@@ -2,6 +2,7 @@ package pl.inpost.data.mapper
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.threeten.bp.ZonedDateTime
 import pl.inpost.data.model.EventLogDto
 import pl.inpost.data.model.OperationsDto
 import pl.inpost.data.model.ShipmentDto
@@ -10,7 +11,6 @@ import pl.inpost.data.model.ShipmentTypeDto
 import pl.inpost.data.model.ShipmentsDto
 import pl.inpost.domain.model.ShipmentStatus
 import pl.inpost.domain.model.ShipmentType
-import java.time.ZonedDateTime
 
 class ShipmentsDtoMapperTest {
 

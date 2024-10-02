@@ -2,8 +2,8 @@ package pl.inpost.data.mapper
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.threeten.bp.ZonedDateTime
 import pl.inpost.data.model.EventLogDto
-import java.time.ZonedDateTime
 
 class EventLogDtoMapperTest {
 

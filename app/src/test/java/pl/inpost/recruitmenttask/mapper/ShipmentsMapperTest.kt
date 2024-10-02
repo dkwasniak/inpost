@@ -2,6 +2,7 @@ package pl.inpost.recruitmenttask.mapper
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
+import org.threeten.bp.ZonedDateTime
 import pl.inpost.domain.model.EventLog
 import pl.inpost.domain.model.Operations
 import pl.inpost.domain.model.Shipment
@@ -10,7 +11,6 @@ import pl.inpost.domain.model.ShipmentType
 import pl.inpost.domain.model.Shipments
 import pl.inpost.recruitmenttask.model.ShipmentStatusUiModel
 import pl.inpost.recruitmenttask.model.ShipmentTypeUiModel
-import java.time.ZonedDateTime
 
 class ShipmentsUiMapperTest {
 
