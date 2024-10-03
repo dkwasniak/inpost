@@ -1,47 +1,49 @@
 package pl.inpost.recruitmenttask.presentation.shipmentList
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import pl.inpost.domain.model.Shipment
 import pl.inpost.domain.usecase.GetShipmentUseCase
-import pl.inpost.recruitmenttask.extension.remotelify
+import pl.inpost.domain.remotedata.RemoteData
+import pl.inpost.domain.remotedata.map
 import pl.inpost.recruitmenttask.mapper.toUiModel
-import pl.inpost.recruitmenttask.model.ShipmentUiModel
-import pl.inpost.recruitmenttask.remotedata.bind
-import pl.inpost.recruitmenttask.util.setState
+import pl.inpost.recruitmenttask.model.GroupedShipmentsUiModel
 import javax.inject.Inject
+
+data class ShipmentUiState(
+    val shipments: RemoteData<Throwable, GroupedShipmentsUiModel> = RemoteData.NotAsked
+)
 
 @HiltViewModel
 class ShipmentListViewModel @Inject constructor(
     private val getShipmentUseCase: GetShipmentUseCase
 ) : ViewModel() {
 
-    private val mutableViewState = MutableLiveData<List<ShipmentUiModel>>(emptyList())
-    val viewState: LiveData<List<ShipmentUiModel>> = mutableViewState
+    private val stateFlow = MutableStateFlow(ShipmentUiState())
+
+    fun stateFlow(): StateFlow<ShipmentUiState> = stateFlow.asStateFlow()
 
     init {
         refreshData()
     }
 
+    fun refresh() {
+        refreshData()
+    }
+
     private fun refreshData() {
+        stateFlow.value = stateFlow.value.copy(shipments = RemoteData.Loading)
         viewModelScope.launch {
-            getShipmentUseCase.execute().remotelify().collect {
-                it.bind(
-                    dataBinder = { data ->
-                        data?.let {
-                            mutableViewState.setState { data.map { shipment -> shipment.toUiModel() } }
-                        }
-                    },
-                    loadingBinder = {
-
-                    }
-                )
+            getShipmentUseCase.execute().collect {
+                stateFlow.value =
+                    stateFlow.value.copy(shipments = it.map { shipments ->
+                        shipments.toUiModel()
+                    })
             }
-
         }
     }
 }
