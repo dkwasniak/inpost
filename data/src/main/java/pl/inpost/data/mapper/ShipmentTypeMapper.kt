@@ -9,3 +9,10 @@ fun ShipmentTypeDto.toDomain(): ShipmentType {
         ShipmentTypeDto.COURIER -> ShipmentType.COURIER
     }
 }
+
+fun ShipmentType.toDto(): ShipmentTypeDto {
+    return when (this) {
+        ShipmentType.PARCEL_LOCKER -> ShipmentTypeDto.PARCEL_LOCKER
+        ShipmentType.COURIER -> ShipmentTypeDto.COURIER
+    }
+}

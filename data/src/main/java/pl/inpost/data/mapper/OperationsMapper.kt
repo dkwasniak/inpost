@@ -13,3 +13,14 @@ fun OperationsDto.toDomain(): Operations {
         endOfWeekCollection = this.endOfWeekCollection
     )
 }
+
+fun Operations.toDto(): OperationsDto {
+    return OperationsDto(
+        manualArchive = this.manualArchive,
+        delete = this.delete,
+        collect = this.collect,
+        highlight = this.highlight,
+        expandAvizo = this.expandAvizo,
+        endOfWeekCollection = this.endOfWeekCollection
+    )
+}
