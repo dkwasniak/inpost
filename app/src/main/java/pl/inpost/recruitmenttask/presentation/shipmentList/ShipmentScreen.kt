@@ -61,7 +61,7 @@ fun ShipmentScreen(
 
         val viewState = viewModel.stateFlow().collectAsState().value
 
-        Content(padding, viewState, viewModel::refresh)
+        Content(padding, viewState, viewModel::refresh, viewModel::archiveShipment)
     }
 }
 
@@ -80,7 +80,12 @@ private fun AppBar() {
 }
 
 @Composable
-private fun Content(padding: PaddingValues, viewState: ShipmentUiState, onRefresh: () -> Unit) {
+private fun Content(
+    padding: PaddingValues,
+    viewState: ShipmentUiState,
+    onRefresh: () -> Unit,
+    archiveShipment: (String) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -103,7 +108,7 @@ private fun Content(padding: PaddingValues, viewState: ShipmentUiState, onRefres
                 }
             },
             dataBinder = { data ->
-                ShipmentsList(data, onRefresh)
+                ShipmentsList(data, onRefresh, archiveShipment)
             }
         )
     }
@@ -111,7 +116,11 @@ private fun Content(padding: PaddingValues, viewState: ShipmentUiState, onRefres
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-private fun ShipmentsList(shipmentsList: GroupedShipmentsUiModel?, onRefresh: () -> Unit) {
+private fun ShipmentsList(
+    shipmentsList: GroupedShipmentsUiModel?,
+    onRefresh: () -> Unit,
+    archiveShipment: (String) -> Unit
+) {
 
     var isRefreshing by remember { mutableStateOf(false) }
 
@@ -142,8 +151,8 @@ private fun ShipmentsList(shipmentsList: GroupedShipmentsUiModel?, onRefresh: ()
                     }
                 }
             } else {
-                readyToCollectItemsSection(shipmentsList.readyToPickup)
-                otherItemsSection(shipmentsList.other)
+                readyToCollectItemsSection(shipmentsList.readyToPickup, archiveShipment)
+                otherItemsSection(shipmentsList.other, archiveShipment)
             }
         }
 
@@ -157,26 +166,34 @@ private fun ShipmentsList(shipmentsList: GroupedShipmentsUiModel?, onRefresh: ()
     }
 }
 
-private fun LazyListScope.otherItemsSection(shipmentsList: List<ShipmentUiModel>) {
+private fun LazyListScope.otherItemsSection(
+    shipmentsList: List<ShipmentUiModel>,
+    archiveShipment: (String) -> Unit
+) {
     if(shipmentsList.isNotEmpty()) {
         item {
             SectionHeader(title = stringResource(R.string.shipment_list_other_header))
         }
         items(shipmentsList) { shipment ->
-            SwipeableShipmentCard(shipment, {})
+            SwipeableShipmentCard(shipment) {
+                archiveShipment(shipment.number)
+            }
         }
     }
 }
 
-private fun LazyListScope.readyToCollectItemsSection(shipmentsList: List<ShipmentUiModel>) {
+private fun LazyListScope.readyToCollectItemsSection(
+    shipmentsList: List<ShipmentUiModel>,
+    archiveShipment: (String) -> Unit
+) {
     if(shipmentsList.isNotEmpty()) {
         item {
             SectionHeader(title = stringResource(R.string.shipment_list_highlighted_header))
         }
         items(shipmentsList) { shipment ->
-            SwipeableShipmentCard(shipment, {
-                Log.d("TAG", "Dismissed")
-            })
+            SwipeableShipmentCard(shipment) {
+                archiveShipment(shipment.number)
+            }
         }
     }
 }
@@ -212,7 +229,7 @@ fun PreviewShipmentScreenScreen() {
                         listOf(mockShipment1, mockShipment2, mockShipment3)
                     )
                 )
-            )
-        ) {}
+            ), {}, {}
+        )
     }
 }

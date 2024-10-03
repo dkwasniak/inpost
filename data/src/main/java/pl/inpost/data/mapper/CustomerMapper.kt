@@ -10,3 +10,11 @@ fun CustomerDto.toDomain(): Customer {
         name = this.name
     )
 }
+
+fun Customer.toDto(): CustomerDto {
+    return CustomerDto(
+        name = this.name,
+        email = this.email,
+        phoneNumber = this.phoneNumber
+    )
+}

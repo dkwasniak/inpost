@@ -9,3 +9,10 @@ fun EventLogDto.toDomain(): EventLog {
         date = this.date
     )
 }
+
+fun EventLog.toDto(): EventLogDto {
+    return EventLogDto(
+        name = this.name,
+        date = this.date
+    )
+}

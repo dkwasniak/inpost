@@ -10,8 +10,10 @@ import kotlinx.coroutines.launch
 import pl.inpost.domain.usecase.GetShipmentUseCase
 import pl.inpost.domain.remotedata.RemoteData
 import pl.inpost.domain.remotedata.map
+import pl.inpost.domain.usecase.ArchiveShipmentUseCase
 import pl.inpost.recruitmenttask.mapper.toUiModel
 import pl.inpost.recruitmenttask.model.GroupedShipmentsUiModel
+import pl.inpost.recruitmenttask.model.removeShipment
 import javax.inject.Inject
 
 data class ShipmentUiState(
@@ -20,7 +22,8 @@ data class ShipmentUiState(
 
 @HiltViewModel
 class ShipmentListViewModel @Inject constructor(
-    private val getShipmentUseCase: GetShipmentUseCase
+    private val getShipmentUseCase: GetShipmentUseCase,
+    private val archiveShipmentUseCase: ArchiveShipmentUseCase
 ) : ViewModel() {
 
     private val stateFlow = MutableStateFlow(ShipmentUiState())
@@ -35,6 +38,19 @@ class ShipmentListViewModel @Inject constructor(
         refreshData()
     }
 
+    fun archiveShipment(shipmentNumber: String) {
+        viewModelScope.launch {
+            archiveShipmentUseCase.execute(shipmentNumber)
+
+            val currentShipments = stateFlow.value.shipments
+            if (currentShipments is RemoteData.Success) {
+                val updatedGroupedShipments = currentShipments.data.removeShipment(shipmentNumber)
+                stateFlow.value = stateFlow.value.copy(
+                    shipments = RemoteData.Success(updatedGroupedShipments)
+                )
+            }
+        }
+    }
     private fun refreshData() {
         stateFlow.value = stateFlow.value.copy(shipments = RemoteData.Loading)
         viewModelScope.launch {
