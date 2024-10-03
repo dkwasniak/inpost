@@ -9,10 +9,10 @@ package pl.inpost.data.model
  * @param endOfWeekCollection - shipment will be available to pick up over the weekend - change colors
  */
 data class OperationsDto(
-    val manualArchive: Boolean,
-    val delete: Boolean,
-    val collect: Boolean,
-    val highlight: Boolean,
-    val expandAvizo: Boolean,
-    val endOfWeekCollection: Boolean
+    val manualArchive: Boolean = false,
+    val delete: Boolean = false,
+    val collect: Boolean = false,
+    val highlight: Boolean = false,
+    val expandAvizo: Boolean = false,
+    val endOfWeekCollection: Boolean = false
 )
