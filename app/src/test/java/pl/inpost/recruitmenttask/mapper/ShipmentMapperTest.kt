@@ -81,7 +81,7 @@ class ShipmentMapperTest {
         assertEquals("Jane Smith", uiModel.sender?.name)
 
         // Verify operations are mapped correctly
-        val operationsUiModel = uiModel.operationsUiModel
+        val operationsUiModel = uiModel.operations
         assertEquals(true, operationsUiModel.manualArchive)
         assertEquals(false, operationsUiModel.delete)
         assertEquals(true, operationsUiModel.collect)

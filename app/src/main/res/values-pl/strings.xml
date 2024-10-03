@@ -10,6 +10,7 @@
     <string name="status_confirmed">W trakcie przygotowania</string>
     <string name="status_created">Przesyłka utworzona</string>
     <string name="status_delivered">Odebrana</string>
+    <string name="status_not_ready">Nie gotowa</string>
     <string name="status_other">Inny status</string>
     <string name="status_out_for_delivery">Wydana do doręczenia</string>
     <string name="status_pickup_time_expired">Upłynął termin odbioru</string>
@@ -19,4 +20,19 @@
     <string name="menu_ready_to_pickup">Gotowe do odbioru</string>
     <string name="menu_other">Pozostałe</string>
     <string name="menu_all">Wszystkie</string>
+
+    <string name="shipment_screen_title">Zadanie Rekrutacyjne InPost</string>
+    <string name="shipment_card_parcel_number_label">Numer Paczki</string>
+    <string name="shipment_card_status_label">Status</string>
+    <string name="shipment_card_sender_label">Nadawca</string>
+    <string name="shipment_card_more_label">Więcej</string>
+
+
+    <string name="accessibility_right_pointing_arrow">Strzałka wskazująca w prawo</string>
+    <string name="accessibility_paczkomat_image">Ikona paczkomatu</string>
+    <string name="details_status_awaiting_collection">Oczekuje na odbiór do</string>
+    <string name="details_status_delivered">Dostarczona</string>
+    <string name="shipment_list_other_header">Inne</string>
+    <string name="shipment_list_highlighted_header">Gotowe do odbioru</string>
+    <string name="shipment_archive">Archiwizuj</string>
 </resources>
