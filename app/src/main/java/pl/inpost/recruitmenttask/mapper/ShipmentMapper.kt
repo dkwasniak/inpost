@@ -18,7 +18,7 @@ fun Shipment.toUiModel(): ShipmentUiModel {
         pickUpDate = this.pickUpDate,
         receiver = this.receiver?.toUiModel(),
         sender = this.sender?.toUiModel(),
-        operationsUiModel = this.operations.toUiModel(),
+        operations = this.operations.toUiModel(),
         detailsStatus = getDetailedStatus(this.expiryDate.toDisplayString(), this.status)
     )
 }
