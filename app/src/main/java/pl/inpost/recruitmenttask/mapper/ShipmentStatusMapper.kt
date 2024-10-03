@@ -18,5 +18,6 @@ fun ShipmentStatus.toUiModel(): ShipmentStatusUiModel {
         ShipmentStatus.PICKUP_TIME_EXPIRED -> ShipmentStatusUiModel.PICKUP_TIME_EXPIRED
         ShipmentStatus.READY_TO_PICKUP -> ShipmentStatusUiModel.READY_TO_PICKUP
         ShipmentStatus.RETURNED_TO_SENDER -> ShipmentStatusUiModel.RETURNED_TO_SENDER
+        ShipmentStatus.NOT_READY -> ShipmentStatusUiModel.NOT_READY
     }
 }

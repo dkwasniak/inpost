@@ -5,23 +5,25 @@ import pl.inpost.recruitmenttask.R
 
 /**
  * Order of statuses - higher number = higher priority
- * 1. CREATED
- * 2. CONFIRMED
- * 3. ADOPTED_AT_SOURCE_BRANCH
- * 4. SENT_FROM_SOURCE_BRANCH
- * 5. ADOPTED_AT_SORTING_CENTER
- * 6. SENT_FROM_SORTING_CENTER
- * 7. OTHER
- * 8. DELIVERED
- * 9. RETURNED_TO_SENDER
- * 10. AVIZO
- * 11. OUT_FOR_DELIVERY
- * 12. READY_TO_PICKUP
- * 13. PICKUP_TIME_EXPIRED
+ * 1. NOT_READY
+ * 2. CREATED
+ * 3. CONFIRMED
+ * 4. ADOPTED_AT_SOURCE_BRANCH
+ * 5. SENT_FROM_SOURCE_BRANCH
+ * 6. ADOPTED_AT_SORTING_CENTER
+ * 7. SENT_FROM_SORTING_CENTER
+ * 8. OTHER
+ * 9. DELIVERED
+ * 10. RETURNED_TO_SENDER
+ * 11. AVIZO
+ * 12. OUT_FOR_DELIVERY
+ * 13. READY_TO_PICKUP
+ * 14. PICKUP_TIME_EXPIRED
  */
 enum class ShipmentStatusUiModel(
     @StringRes val nameRes: Int
 ) {
+    NOT_READY(R.string.status_not_ready),
     CREATED(R.string.status_created),
     CONFIRMED(R.string.status_confirmed),
     ADOPTED_AT_SOURCE_BRANCH(R.string.status_adopted_at_source_branch),
@@ -34,6 +36,6 @@ enum class ShipmentStatusUiModel(
     AVIZO(R.string.status_avizo),
     OUT_FOR_DELIVERY(R.string.status_out_for_delivery),
     READY_TO_PICKUP(R.string.status_ready_to_pickup),
-    PICKUP_TIME_EXPIRED(R.string.status_pickup_time_expired)
+    PICKUP_TIME_EXPIRED(R.string.status_pickup_time_expired),
 
 }
