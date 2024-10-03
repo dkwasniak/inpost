@@ -14,5 +14,6 @@ data class ShipmentUiModel(
     val pickUpDate: ZonedDateTime?,
     val receiver: CustomerUiModel?,
     val sender: CustomerUiModel?,
-    val operationsUiModel: OperationsUiModel
+    val operationsUiModel: OperationsUiModel,
+    val detailsStatus: DetailsStatusUiModel? = null
 )

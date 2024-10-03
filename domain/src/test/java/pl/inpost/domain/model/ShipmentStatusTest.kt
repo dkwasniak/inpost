@@ -9,6 +9,7 @@ class ShipmentStatusTest {
     fun `should maintain the correct order of statuses`() {
         // Given: Expected order of statuses based on the comment in the code
         val expectedOrder = listOf(
+            ShipmentStatus.NOT_READY,
             ShipmentStatus.CREATED,
             ShipmentStatus.CONFIRMED,
             ShipmentStatus.ADOPTED_AT_SOURCE_BRANCH,
@@ -34,7 +35,7 @@ class ShipmentStatusTest {
     @Test
     fun `should have all statuses defined in correct order`() {
         // Given: Expected number of statuses
-        val expectedStatusCount = 13
+        val expectedStatusCount = 14
 
         // When: The actual number of statuses in the enum
         val actualStatusCount = ShipmentStatus.values().size

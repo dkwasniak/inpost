@@ -18,5 +18,7 @@ fun ShipmentStatusDto.toDomain(): ShipmentStatus {
         ShipmentStatusDto.PICKUP_TIME_EXPIRED -> ShipmentStatus.PICKUP_TIME_EXPIRED
         ShipmentStatusDto.READY_TO_PICKUP -> ShipmentStatus.READY_TO_PICKUP
         ShipmentStatusDto.RETURNED_TO_SENDER -> ShipmentStatus.RETURNED_TO_SENDER
+        ShipmentStatusDto.NOT_READY -> ShipmentStatus.NOT_READY
+
     }
 }

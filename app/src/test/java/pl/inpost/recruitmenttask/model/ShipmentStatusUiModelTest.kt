@@ -10,19 +10,20 @@ class ShipmentStatusUiModelTest {
     fun `should maintain the correct order of statuses`() {
         // Given: Expected order of statuses based on the comment in the code
         val expectedOrder = listOf(
-            ShipmentStatusUiModel.CREATED,                // Priority 1
-            ShipmentStatusUiModel.CONFIRMED,              // Priority 2
-            ShipmentStatusUiModel.ADOPTED_AT_SOURCE_BRANCH, // Priority 3
-            ShipmentStatusUiModel.SENT_FROM_SOURCE_BRANCH,  // Priority 4
-            ShipmentStatusUiModel.ADOPTED_AT_SORTING_CENTER, // Priority 5
-            ShipmentStatusUiModel.SENT_FROM_SORTING_CENTER,  // Priority 6
-            ShipmentStatusUiModel.OTHER,                  // Priority 7
-            ShipmentStatusUiModel.DELIVERED,              // Priority 8
-            ShipmentStatusUiModel.RETURNED_TO_SENDER,     // Priority 9
-            ShipmentStatusUiModel.AVIZO,                  // Priority 10
-            ShipmentStatusUiModel.OUT_FOR_DELIVERY,       // Priority 11
-            ShipmentStatusUiModel.READY_TO_PICKUP,        // Priority 12
-            ShipmentStatusUiModel.PICKUP_TIME_EXPIRED     // Priority 13
+            ShipmentStatusUiModel.NOT_READY,                // Priority 1
+            ShipmentStatusUiModel.CREATED,                // Priority 2
+            ShipmentStatusUiModel.CONFIRMED,              // Priority 3
+            ShipmentStatusUiModel.ADOPTED_AT_SOURCE_BRANCH, // Priority 4
+            ShipmentStatusUiModel.SENT_FROM_SOURCE_BRANCH,  // Priority 5
+            ShipmentStatusUiModel.ADOPTED_AT_SORTING_CENTER, // Priority 6
+            ShipmentStatusUiModel.SENT_FROM_SORTING_CENTER,  // Priority 7
+            ShipmentStatusUiModel.OTHER,                  // Priority 8
+            ShipmentStatusUiModel.DELIVERED,              // Priority 9
+            ShipmentStatusUiModel.RETURNED_TO_SENDER,     // Priority 10
+            ShipmentStatusUiModel.AVIZO,                  // Priority 11
+            ShipmentStatusUiModel.OUT_FOR_DELIVERY,       // Priority 12
+            ShipmentStatusUiModel.READY_TO_PICKUP,        // Priority 13
+            ShipmentStatusUiModel.PICKUP_TIME_EXPIRED     // Priority 14
         )
 
         // When: The actual order of statuses in the enum
@@ -36,6 +37,7 @@ class ShipmentStatusUiModelTest {
     fun `should use correct string resources for each status`() {
         // Given: Expected mapping of statuses to string resources
         val expectedMappings = mapOf(
+            ShipmentStatusUiModel.NOT_READY to R.string.status_not_ready,
             ShipmentStatusUiModel.ADOPTED_AT_SORTING_CENTER to R.string.status_adopted_at_sorting_center,
             ShipmentStatusUiModel.SENT_FROM_SORTING_CENTER to R.string.status_sent_from_sorting_center,
             ShipmentStatusUiModel.ADOPTED_AT_SOURCE_BRANCH to R.string.status_adopted_at_source_branch,
@@ -61,7 +63,7 @@ class ShipmentStatusUiModelTest {
     @Test
     fun `should have all statuses defined in correct order`() {
         // Given: Expected number of statuses
-        val expectedStatusCount = 13
+        val expectedStatusCount = 14
 
         // When: The actual number of statuses in the enum
         val actualStatusCount = ShipmentStatusUiModel.values().size
